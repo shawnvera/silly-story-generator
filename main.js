@@ -3,6 +3,8 @@
 const customName = document.getElementById('customname');
 const randomize = document.querySelector('.randomize');
 const story = document.querySelector('.story');
+
+
 let storyText = "It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.";
 let insertX = ['Willy the Goblin', 'Big Daddy', 'Father Christmas'];
 let insertY = ['the soup kitchen', 'Disneyland', 'the White House'];
@@ -15,19 +17,21 @@ function randomValueFromArray(array) {
     return array[random];
 }
 
-// add event listener for the button
-
 randomize.addEventListener('click', result);
 
 function result() {
+
     // declaring local variables
+
     let newStory = storyText;
 
     let xItem = randomValueFromArray(insertX);
     let yItem = randomValueFromArray(insertY);
     let zItem = randomValueFromArray(insertZ);
 
-    newStory = newStory.replaceAll(":insertx:", xItem);
+    // replace string elements.
+
+    newStory = newStory.replaceAll(':insertx:', xItem);
     newStory = newStory.replaceAll(':inserty:', yItem);
     newStory = newStory.replaceAll(':insertz:', zItem);
 
@@ -36,11 +40,13 @@ function result() {
         newStory = newStory.replaceAll('Bob', name);
     }
 
+    // US/UK radio button.
+
     if (document.getElementById("uk").checked) {
-        const weight = Math.round(300 / 14) + 'stone';
-        const temperature = Math.round((94 - 32) * 5 / 9) + 'centigrade';
+        const weight = Math.round(300 / 14) + ' stone';
+        const temperature = Math.round((94 - 32) * 5 / 9) + ' centigrade';
         newStory = newStory.replaceAll('300 pounds', weight);
-        newStory = newStory.replaceAll('94 Fahrenheit', temperature);
+        newStory = newStory.replaceAll('94 fahrenheit', temperature);
 
     }
 
